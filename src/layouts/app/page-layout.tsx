@@ -1,5 +1,4 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useStoredAppUser } from "@/hooks/use-stored-app-user";
 import useUsers from "@/hooks/use-users";
 import { formatDate } from "@/lib/utils";
 import { Icon } from "@iconify/react";
@@ -14,11 +13,7 @@ const PageLayout = ({
   pageDescription: string;
   children?: ReactNode;
 }) => {
-  const [user] = useStoredAppUser();
-
   const { currentUser } = useUsers();
-  console.log(currentUser);
-  // console.log(user);
 
   useEffect(() => {
     document.title = `${pageTitle} | ${pageDescription}`;

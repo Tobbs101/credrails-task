@@ -113,96 +113,103 @@ const RegistrationForm = () => {
         />
       </Dialog>
 
-      <div className="max-w-[400px] 2xl:max-w-[500px] py-5 w-full flex items-center justify-center flex-col">
-        <Text className="mt-10" size={"3xl"} weight={"semibold"}>
-          Register
-        </Text>
+      <div className="max-w-[400px] overflow-scroll xl:max-w-[600px] 2xl:max-w-[700px] py-5 w-full flex items-center justify-center flex-col">
+        <div className="w-full flex items-center justify-center">
+          <Text className="mt-10" size={"3xl"} weight={"semibold"}>
+            Register
+          </Text>
+        </div>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="max-w-[425px] w-full mt-5"
+            className="max-w-full w-full mt-5"
           >
-            <FormField
-              control={form.control}
-              name="firstName"
-              render={({ field }) => (
-                <FormInput
-                  field={field}
-                  className="border border-gray-300 shadow-none py-5"
-                  label={"First Name"}
-                />
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="lastName"
-              render={({ field }) => (
-                <FormInput
-                  field={field}
-                  className="border border-gray-300 shadow-none py-5"
-                  label={"Last Name"}
-                />
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="mobileNumber"
-              render={({ field }) => (
-                <FormInput
-                  field={field}
-                  type="number"
-                  className="border border-gray-300 shadow-none py-5"
-                  label={"Phone Number"}
-                />
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormInput
-                  type="email"
-                  field={field}
-                  className="border border-gray-300 shadow-none py-5"
-                  label={"Email address"}
-                />
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormInput
-                  field={field}
-                  className="border border-gray-300 shadow-none py-5"
-                  type="password"
-                  label={"Confirm Password"}
-                />
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="confirmPassword"
-              render={({ field }) => (
-                <FormInput
-                  field={field}
-                  className="border border-gray-300 shadow-none py-5"
-                  type="password"
-                  label={"Confirm Password"}
-                />
-              )}
-            />
-
-            <div className="">
+            <div className="flex items-center px-2 justify-center gap-5 flex-wrap">
+              <FormField
+                control={form.control}
+                name="firstName"
+                render={({ field }) => (
+                  <FormInput
+                    field={field}
+                    className="border min-w-[250px] border-gray-300 shadow-none py-5"
+                    label={"First Name"}
+                  />
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="lastName"
+                render={({ field }) => (
+                  <FormInput
+                    field={field}
+                    className="border min-w-[250px] border-gray-300 shadow-none py-5"
+                    label={"Last Name"}
+                  />
+                )}
+              />
+            </div>
+            <div className="flex items-center px-2 justify-center gap-5 flex-wrap">
+              <FormField
+                control={form.control}
+                name="mobileNumber"
+                render={({ field }) => (
+                  <FormInput
+                    field={field}
+                    type="number"
+                    className="border min-w-[250px] border-gray-300 shadow-none py-5"
+                    label={"Phone Number"}
+                  />
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormInput
+                    type="email"
+                    field={field}
+                    className="border min-w-[250px] border-gray-300 shadow-none py-5"
+                    label={"Email address"}
+                  />
+                )}
+              />
+            </div>
+            <div className="flex items-center px-2 justify-center gap-5 flex-wrap">
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormInput
+                    field={field}
+                    className="border min-w-[250px] border-gray-300 shadow-none py-5"
+                    type="password"
+                    label={"Confirm Password"}
+                  />
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="confirmPassword"
+                render={({ field }) => (
+                  <FormInput
+                    field={field}
+                    className="border min-w-[250px] border-gray-300 shadow-none py-5"
+                    type="password"
+                    label={"Confirm Password"}
+                  />
+                )}
+              />
+            </div>
+            <div className="w-full flex items-center justify-center mt-5">
               <SubmitBtn
-                className="w-full h-[45px] rounded-2xl mt-10"
+                className="w-full max-w-[300px] mx-auto h-[45px] bg-gray-600 border border-gray-600 rounded-lg"
                 isSubmitting={isSubmitting}
                 disabled={isSubmitting}
               >
                 Create Account
               </SubmitBtn>
             </div>
-            <div className="flex items-center justify-start mt-1 pl-3">
+            <div className="flex items-center w-full justify-start mx-auto mt-10 pl-3">
               <Text size={"sm"}>Have an account?</Text>
               <Link
                 className="ml-1 hover:text-primary text-sm hover:underline"

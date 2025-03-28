@@ -90,7 +90,7 @@ const LoginForm = () => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="max-w-[425px] w-full mt-5"
+            className="max-w-[325px] w-full mt-5"
           >
             <FormField
               control={form.control}
@@ -118,7 +118,7 @@ const LoginForm = () => {
 
             <div className="">
               <SubmitBtn
-                className="w-full h-[45px] rounded-2xl mt-10"
+                className="w-full h-[45px] bg-gray-600 border border-gray-600 rounded-lg mt-5"
                 isSubmitting={isSubmitting}
                 disabled={isSubmitting}
               >
