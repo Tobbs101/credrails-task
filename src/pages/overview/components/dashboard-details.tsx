@@ -50,13 +50,13 @@ const DashboardDetails = ({ data }: { data: any[] }) => {
       <div className="flex gap-4 mt-6">
         <Link
           to="/dashboard/upload"
-          className="bg-primary text-white px-6 py-2 rounded-md text-sm font-semibold hover:bg-blue-700"
+          className="bg-primary text-white px-6 py-2 rounded-md text-sm font-semibold hover:bg-primary/80 duration-200 transition-all"
         >
           Upload New File
         </Link>
         <Link
           to="/dashboard/details"
-          className="bg-white border text-primary border-primary  px-6 py-2 rounded-md text-sm font-semibold hover:bg-gray-700"
+          className="bg-white border text-primary border-primary  px-6 py-2 rounded-md text-sm font-semibold hover:bg-gray-100 duration-200 transition-all"
         >
           View Files
         </Link>
