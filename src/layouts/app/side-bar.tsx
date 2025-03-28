@@ -46,7 +46,7 @@ const SideBar = () => {
           onClick={() => navigate("/dashboard/overview")}
           className="flex p-0 items-center justify-start"
         >
-          {/* <KudaLogoLight className="h-7" /> */}here
+          View
         </button>
 
         <button
