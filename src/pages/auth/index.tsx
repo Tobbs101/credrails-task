@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { useNavigate } from "react-router-dom";
-
 import AuthLayout from "@/layouts/auth";
+import LoginForm from "@/components/auth/login-form";
 
 const AuthLogin = () => {
-  const navigate = useNavigate();
-
-  return <AuthLayout></AuthLayout>;
+  return (
+    <AuthLayout>
+      <LoginForm />
+    </AuthLayout>
+  );
 };
 
 export default AuthLogin;

@@ -1,7 +1,12 @@
-import React from "react";
+import RegistrationForm from "@/components/auth/registration-form";
+import AuthLayout from "@/layouts/auth";
 
-const Register = () => {
-  return <div>Register</div>;
+const AuthRegister = () => {
+  return (
+    <AuthLayout>
+      <RegistrationForm />
+    </AuthLayout>
+  );
 };
 
-export default Register;
+export default AuthRegister;
