@@ -4,8 +4,8 @@ const Details = () => {
   return (
     <div className="Details h-full bg-[#fefffe]">
       <PageLayout
-        pageTitle="Details"
-        pageDescription="View your file upload details"
+        pageTitle="File Details"
+        pageDescription="Review the details of your uploaded files"
       ></PageLayout>
     </div>
   );

@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useStoredAppUser } from "@/hooks/use-stored-app-user";
+import useUsers from "@/hooks/use-users";
 import { formatDate } from "@/lib/utils";
 import { Icon } from "@iconify/react";
 import { ReactNode, useEffect } from "react";
@@ -14,6 +15,9 @@ const PageLayout = ({
   children?: ReactNode;
 }) => {
   const [user] = useStoredAppUser();
+
+  const { currentUser } = useUsers();
+  console.log(currentUser);
   // console.log(user);
 
   useEffect(() => {
@@ -35,15 +39,17 @@ const PageLayout = ({
 
         <div className="divider bg-[#EFF1FF] w-[1px] h-10 mx-10 mr-6 hidden md:flex" />
 
-        <div className="profile items-center gap-2 cursor-pointer transition-all active:scale-95 hidden md:flex">
-          <Avatar>
-            <AvatarImage src={user?.picture} />
-            <AvatarFallback>{user?.fullName[0]}</AvatarFallback>
+        <div className="items-center gap-2 cursor-pointer transition-all active:scale-95 hidden md:flex">
+          <Avatar className="font-bold">
+            <AvatarImage src={""} />
+            <AvatarFallback>{currentUser?.firstName?.[0]}</AvatarFallback>
           </Avatar>
 
           <div className="details hidden xl:block">
-            <h3 className="font-extrabold">{user?.fullName}</h3>
-            <p className="text-xs text-[#979797]">{user?.role}</p>
+            <h3 className="font-extrabold">
+              {currentUser?.firstName} {currentUser?.lastName}
+            </h3>
+            <p className="text-xs text-[#979797]">Customer</p>
           </div>
         </div>
       </header>

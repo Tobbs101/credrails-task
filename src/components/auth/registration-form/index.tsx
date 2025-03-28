@@ -69,8 +69,10 @@ const RegistrationForm = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+      const { confirmPassword, ...rest } = values;
+
       // Encrypt password before saving
-      const payload = { ...values, password: encrypt(values.password) };
+      const payload = { ...rest, password: encrypt(rest.password) };
 
       const response = await addUser(payload);
 

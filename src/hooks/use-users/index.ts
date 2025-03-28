@@ -1,11 +1,19 @@
 import { NewUserProps } from "@/@types";
-import { SESSION_USERS_KEY } from "@/static";
+import { SESSION_USERS_KEY, SESSION_CURRENT_USER_KEY } from "@/static";
 import useCrypto from "../use-crypto";
 
 // Retrieve users from localStorage
 const getStoredUsers = (): NewUserProps[] => {
   const storedUsers = localStorage.getItem(SESSION_USERS_KEY);
   return storedUsers ? JSON.parse(storedUsers) : [];
+};
+
+const getCurrentUser = (): Omit<NewUserProps, "password"> => {
+  const user = localStorage.getItem(SESSION_CURRENT_USER_KEY);
+  if (!user) return {} as Omit<NewUserProps, "password">;
+
+  const { password, ...userWithoutPassword } = JSON.parse(user);
+  return userWithoutPassword;
 };
 
 const useUsers = () => {
@@ -53,12 +61,16 @@ const useUsers = () => {
           return;
         }
 
+        localStorage.setItem(SESSION_CURRENT_USER_KEY, JSON.stringify(user));
+
         resolve("Login successful!");
       }, 2000); // Simulating API delay
     });
   };
 
-  return { addUser, login };
+  let currentUser = getCurrentUser();
+
+  return { addUser, login, currentUser };
 };
 
 export default useUsers;

@@ -5,7 +5,7 @@ const Upload = () => {
     <div className="Details h-full bg-[#fefffe]">
       <PageLayout
         pageTitle="File Upload"
-        pageDescription="Upload your file here..."
+        pageDescription="Securely upload your file, Supported formats: CSV."
       ></PageLayout>
     </div>
   );

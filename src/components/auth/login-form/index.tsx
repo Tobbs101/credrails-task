@@ -12,6 +12,7 @@ import { useState } from "react";
 import { Dialog } from "@/components/ui/dialog";
 import FailureModalCard from "@/components/custom/failure-modal-card";
 import SuccessModalCard from "@/components/custom/success-modal-card";
+import useUsers from "@/hooks/use-users";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address!" }),
@@ -27,6 +28,7 @@ const LoginForm = () => {
     },
   });
 
+  const { login } = useUsers();
   const navigate = useNavigate();
 
   const [successModal, setSuccessModal] = useState<Response>(Defaults);
@@ -34,14 +36,32 @@ const LoginForm = () => {
 
   const handleCloseOnSuccess = () => {
     setSuccessModal(Defaults);
-    navigate("/artiste");
+    navigate("/dashboard");
   };
 
   const handleCloseOnFailure = () => {
     setFailureModal(Defaults);
   };
 
-  const onSubmit = async (payload: z.infer<typeof formSchema>) => {};
+  const onSubmit = async (payload: z.infer<typeof formSchema>) => {
+    try {
+      const response = await login(payload.email, payload.password);
+
+      setSuccessModal({
+        show: true,
+        title: "Success",
+        info: response as string,
+        primaryBtnLabel: "Proceed",
+      });
+    } catch (error) {
+      setFailureModal({
+        show: true,
+        title: "Error",
+        info: error as string,
+        primaryBtnLabel: "Dismiss",
+      });
+    }
+  };
 
   const { isSubmitting } = form.formState;
 
