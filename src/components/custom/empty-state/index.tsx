@@ -19,7 +19,7 @@ const EmptyState = () => {
       {/* Upload Button */}
       <Link
         to="/dashboard/upload"
-        className="mt-4 bg-primary text-white px-7 py-2 rounded-md text-sm font-semibold hover:bg-blue-700"
+        className="mt-4 bg-primary text-white px-7 py-2 rounded-md text-sm font-semibold hover:bg-primary/80 duration-200 transition-all"
       >
         Upload File
       </Link>

@@ -1,4 +1,5 @@
 import PageLayout from "@/layouts/app/page-layout";
+import DetailsTable from "./components/details-table";
 
 const Details = () => {
   return (
@@ -6,7 +7,9 @@ const Details = () => {
       <PageLayout
         pageTitle="File Details"
         pageDescription="Review the details of your uploaded files"
-      ></PageLayout>
+      >
+        <DetailsTable />
+      </PageLayout>
     </div>
   );
 };

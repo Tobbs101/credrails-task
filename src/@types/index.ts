@@ -28,6 +28,6 @@ export type NewFileProps = {
   endDate: Date;
   dateType: string;
   dateUploaded: Date;
-  file: { name?: string; size?: number } | null;
+  file: { name?: string; size?: number; type?: string; base64: any } | null;
   recordCount: number;
 };

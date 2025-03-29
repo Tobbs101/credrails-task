@@ -7,7 +7,7 @@ const AuthLayout = ({ children }: { children?: ReactNode }) => {
   return (
     <>
       <div className={`flex items-start justify-between min-h-screen`}>
-        <div className="h-[100vh] lg:inline hidden overflow-hidden flex-[2] relative">
+        <div className="h-[100vh] lg:inline hidden overflow-hidden flex-[2.5] relative">
           <img src={Auth_Bg} alt="" className="h-full w-full z-1" />
           <div className="absolute top-0 left-0 h-full w-full bg-black/30"></div>
         </div>

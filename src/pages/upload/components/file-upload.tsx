@@ -95,20 +95,18 @@ const FileUpload = () => {
 
   const onDrop = (acceptedFiles: any[]) => {
     if (acceptedFiles.length > 0) {
-      const file = acceptedFiles[0];
-      setFile(file);
       setIsProcessing(true);
       setProgress(1);
       setIsError(false); // Reset error state
       setErrorMessage(null); // Reset error message state
 
+      const file = acceptedFiles[0];
       const reader = new FileReader();
 
       reader.onprogress = (event) => {
         if (event.lengthComputable) {
           const percentLoaded = Math.round((event.loaded / event.total) * 100);
 
-          // Simulate delay in progress
           let simulatedProgress = 0;
           const simulateProgress = setInterval(() => {
             simulatedProgress += 10;
@@ -129,54 +127,63 @@ const FileUpload = () => {
             const workbook = XLSX.read(binaryStr, { type: "binary" });
             const sheetName = workbook.SheetNames[0]; // Get the first sheet
             const worksheet = workbook.Sheets[sheetName];
+
             const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-            // Count total rows including the header
-            const rowCount = jsonData.length;
+            const filteredData = jsonData.filter((row) =>
+              Array.isArray(row) ? row.some((cell) => cell !== "") : false
+            );
+
+            const rowCount =
+              filteredData.length > 1 ? filteredData.length - 1 : 0;
 
             if (rowCount <= 0) {
-              const errorMsg =
-                "The file must contain at least one row of data.";
               setIsProcessing(false);
               setIsError(true);
-              setErrorMessage(errorMsg);
+              setErrorMessage(
+                "The file must contain at least one row of data."
+              );
               return;
             }
 
-            // Save row count
-            setRecordCount(rowCount);
-            setIsProcessing(false);
-            setProgress(100);
+            // Simulate processing delay (2s)
+            setTimeout(() => {
+              setRecordCount(rowCount);
+              setIsProcessing(false);
+              setProgress(100);
+              setFile(file);
+            }, 2000);
           } else if (file.name.endsWith(".csv")) {
             // Handle CSV file
             Papa.parse(reader.result as string, {
-              header: false, // Include headers in the count
+              header: true, // Treat first row as header
               skipEmptyLines: true, // Ignore empty lines
               complete: (result) => {
                 const { data } = result;
 
-                // Count total rows including the header
                 const rowCount = data.length;
 
                 if (rowCount <= 0) {
-                  const errorMsg =
-                    "The file must contain at least one row of data.";
                   setIsProcessing(false);
                   setIsError(true);
-                  setErrorMessage(errorMsg);
+                  setErrorMessage(
+                    "The file must contain at least one row of data."
+                  );
                   return;
                 }
 
-                // Save row count
-                setRecordCount(rowCount);
-                setIsProcessing(false);
-                setProgress(100);
+                // Simulate processing delay (2s)
+                setTimeout(() => {
+                  setRecordCount(rowCount);
+                  setIsProcessing(false);
+                  setProgress(100);
+                  setFile(file);
+                }, 2000);
               },
               error: (error: Error) => {
-                const errorMsg = `Error parsing CSV: ${error.message}`;
                 setIsProcessing(false);
                 setIsError(true);
-                setErrorMessage(errorMsg);
+                setErrorMessage(`Error parsing CSV: ${error.message}`);
               },
             });
           }
@@ -243,21 +250,37 @@ const FileUpload = () => {
   };
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const payload = {
-      ...values,
-      file: { name: file?.name, size: file?.size },
-      dateUploaded: new Date(),
-      recordCount,
+    const fileToBase64 = (file: File): Promise<string> => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = (error) => reject(error);
+      });
     };
 
     try {
+      const base64String = file ? await fileToBase64(file) : null;
+
+      const payload = {
+        ...values,
+        file: {
+          name: file?.name,
+          size: file?.size,
+          type: file?.type,
+          base64: base64String,
+        },
+        dateUploaded: new Date(),
+        recordCount,
+      };
+
       const response = await addFile(payload);
 
       setSuccessModal({
         show: true,
         title: "Success",
         info: response as string,
-        primaryBtnLabel: "Dismiss",
+        primaryBtnLabel: "Close",
       });
     } catch (error) {
       setFailureModal({
@@ -268,8 +291,6 @@ const FileUpload = () => {
       });
     }
   };
-
-  //   console.log(form.getValues());
 
   return (
     <>

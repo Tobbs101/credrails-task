@@ -1,6 +1,6 @@
 import PageLayout from "@/layouts/app/page-layout";
 import DashboardDetails from "./components/dashboard-details";
-import EmptyState from "./components/empty-state";
+import EmptyState from "@/components/custom/empty-state";
 import useFiles from "@/hooks/use-files";
 
 const Upload = () => {
