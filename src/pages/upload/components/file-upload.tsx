@@ -79,8 +79,6 @@ const FileUpload = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      startDate: new Date(),
-      endDate: new Date(),
       dateType: "created_at",
     },
   });
@@ -245,8 +243,12 @@ const FileUpload = () => {
   };
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
-    const payload = { ...values, file, dateUploaded: new Date(), recordCount };
+    const payload = {
+      ...values,
+      file: { name: file?.name, size: file?.size },
+      dateUploaded: new Date(),
+      recordCount,
+    };
 
     try {
       const response = await addFile(payload);
@@ -291,8 +293,9 @@ const FileUpload = () => {
         <div className="shadow-md max-w-[425px] w-full rounded-sm border border-gray-50 p-5 flex items-center justify-start flex-col">
           <h1 className="font-bold">Upload file</h1>
           <div className="divider bg-gray-100 h-[1px] my-4 w-full" />
-          <p className="text-center text-sm">
-            Please upload your <span className="font-bold">.CSV, .XLSX</span>
+          <p className="text-left px-2 w-full text-sm">
+            Please upload your <span className="font-bold">.CSV, .XLSX</span>{" "}
+            file
           </p>
           <Form {...form}>
             <form
@@ -377,7 +380,7 @@ const FileUpload = () => {
             <SubmitBtn
               isSubmitting={form.formState.isSubmitting}
               disabled={!file}
-              className="px-10 my-5 bg-primary w-fit"
+              className="w-[110px] my-5 h-[40px] bg-primary"
               onClick={() =>
                 document.getElementById("file-upload-btn")?.click()
               }
