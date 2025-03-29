@@ -42,6 +42,7 @@ const SuccessModalCard = ({
       <DialogFooter className="flex items-center justify-center sm:justify-center flex-row">
         <DialogClose asChild>
           <Button
+            type="button"
             className="rounded-[10px] p-[14px 30px] text-[16px] w-[100px] h-[48px] bg-primary hover:bg-primary/80 transition-all active:scale-95 font-bold"
             onClick={() => onProceed?.()}
           >
