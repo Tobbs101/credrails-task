@@ -1,13 +1,5 @@
 import { ReactNode } from "react";
 
-export interface AppUser {
-  email: string;
-  fullName: string;
-  picture: string;
-  role: string;
-  teams: string[];
-}
-
 export type NewUserProps = {
   firstName: string;
   lastName: string;
