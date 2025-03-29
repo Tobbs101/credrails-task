@@ -6,8 +6,6 @@ import useFiles from "@/hooks/use-files";
 const Upload = () => {
   const { storedFiles } = useFiles();
 
-  console.log(storedFiles);
-
   return (
     <div className="Details h-full bg-[#fefffe]">
       <PageLayout
