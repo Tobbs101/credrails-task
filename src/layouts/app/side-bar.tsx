@@ -2,11 +2,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import Logo from "@/assets/Logo.png";
-import {
-  SESSION_CURRENT_USER_KEY,
-  SESSION_FILES_KEY,
-  SESSION_USERS_KEY,
-} from "@/static";
 
 const menu = [
   {
@@ -41,9 +36,6 @@ const SideBar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem(SESSION_CURRENT_USER_KEY);
-    localStorage.removeItem(SESSION_FILES_KEY);
-    localStorage.removeItem(SESSION_USERS_KEY);
     navigate("/auth/login");
   };
 
