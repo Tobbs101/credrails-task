@@ -2,6 +2,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import Logo from "@/assets/Logo.png";
+import {
+  SESSION_CURRENT_USER_KEY,
+  SESSION_FILES_KEY,
+  SESSION_USERS_KEY,
+} from "@/static";
 
 const menu = [
   {
@@ -34,6 +39,13 @@ const getIcon = (linkName: string) => {
 const SideBar = () => {
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem(SESSION_CURRENT_USER_KEY);
+    localStorage.removeItem(SESSION_FILES_KEY);
+    localStorage.removeItem(SESSION_USERS_KEY);
+    navigate("/auth/login");
+  };
 
   return (
     <aside className="z-[20] lg:min-w-60 border-r border-[#EFF1FF]">
@@ -90,7 +102,7 @@ const SideBar = () => {
           <div className="divider bg-[#EFF1FF] h-[1px] my-7" />
           <button
             className="menu-item py-4 flex items-center gap-2 text-[#979797] transition-all active:scale-95"
-            onClick={() => navigate("/auth/login")}
+            onClick={handleLogout}
           >
             <Icon icon="carbon:logout" />
             <span>Logout</span>

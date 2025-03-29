@@ -16,3 +16,27 @@ This is the frontend project developed for a CredRails assessment. It leverages 
 - **Dashboard View:** A dedicated section for authenticated users.
 - **File Upload Page:** Functionality for users to upload files.
 - **File Details Page:** A view to display information about individual uploaded files.
+
+## How to Run the Project
+
+Follow these steps to run the CredRails frontend assessment project locally:
+
+1.  **Clone the Repository:** If you haven't already, clone the project repository to your local machine using Git:
+
+    ```bash
+    git clone <repository_url>
+    ```
+
+2.  **Install Dependencies:** Navigate to the project directory in your terminal and install the required dependencies using Yarn:
+
+    ```bash
+    yarn install
+    ```
+
+3.  **Start the Development Server:** Once the dependencies are installed, you can start the Vite development server by running the following command:
+
+    ```bash
+    yarn dev
+    ```
+
+4.  **Open in Your Browser:** Open your web browser and navigate to the address provided in the terminal (usually `http://localhost:5173/`). You should now see the CredRails frontend assessment application running in your browser.
