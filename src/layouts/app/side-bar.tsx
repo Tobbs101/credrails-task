@@ -54,7 +54,7 @@ const SideBar = () => {
           <Icon
             icon={sidebarOpen ? "mingcute:close-line" : "ci:menu-duo-lg"}
             width={28}
-            color="#40196D"
+            color="#4b5563"
           />
         </button>
       </header>

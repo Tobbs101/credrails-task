@@ -257,14 +257,14 @@ const FileUpload = () => {
         show: true,
         title: "Success",
         info: response as string,
-        primaryBtnLabel: "Proceed",
+        primaryBtnLabel: "Dismiss",
       });
     } catch (error) {
       setFailureModal({
         show: true,
         title: "Error",
         info: error as string,
-        primaryBtnLabel: "Dismiss",
+        primaryBtnLabel: "Try again",
       });
     }
   };

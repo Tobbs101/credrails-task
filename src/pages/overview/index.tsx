@@ -1,13 +1,12 @@
 import PageLayout from "@/layouts/app/page-layout";
 import DashboardDetails from "./components/dashboard-details";
 import EmptyState from "./components/empty-state";
+import useFiles from "@/hooks/use-files";
 
 const Upload = () => {
-  const recentUploads = [
-    { name: "report.pdf", size: "2MB", date: "2 hours ago" },
-    { name: "invoice.png", size: "1MB", date: "1 day ago" },
-    { name: "design.psd", size: "5MB", date: "3 days ago" },
-  ];
+  const { storedFiles } = useFiles();
+
+  console.log(storedFiles);
 
   return (
     <div className="Details h-full bg-[#fefffe]">
@@ -15,8 +14,8 @@ const Upload = () => {
         pageTitle="Dashboard"
         pageDescription="Welcome to your homepage..."
       >
-        {recentUploads?.length ? (
-          <DashboardDetails data={recentUploads} />
+        {storedFiles?.length ? (
+          <DashboardDetails data={storedFiles} />
         ) : (
           <EmptyState />
         )}
