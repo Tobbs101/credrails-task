@@ -1,30 +1,18 @@
-# React + TypeScript + Vite
+# Frontend Assessment for CredRails
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend project developed for a CredRails assessment. It leverages React and TypeScript for a robust and maintainable codebase, Vite for a fast development experience, Shadcn UI for pre-styled components, and Tailwind CSS for rapid styling. Key features implemented include user authentication (login/registration), a dashboard, file upload functionality, and file details views.
 
-Currently, two official plugins are available:
+## Included Technologies
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React:** A JavaScript library for building user interfaces.
+- **TypeScript:** A typed superset of JavaScript for enhanced code quality and maintainability.
+- **Vite:** A build tool that provides a fast and optimized development experience with Hot Module Replacement (HMR).
+- **Shadcn UI:** A collection of reusable UI components built using Radix UI primitives and styled with Tailwind CSS.
+- **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
 
-## Expanding the ESLint configuration
+## Pages & Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **Authentication:** Implementation for user login and registration.
+- **Dashboard View:** A dedicated section for authenticated users.
+- **File Upload Page:** Functionality for users to upload files.
+- **File Details Page:** A view to display information about individual uploaded files.
