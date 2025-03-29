@@ -116,9 +116,9 @@ const LoginForm = () => {
               )}
             />
 
-            <div className="">
+            <div className="mt-10">
               <SubmitBtn
-                className="w-full h-[45px] bg-gray-600 border border-gray-600 rounded-lg mt-5"
+                className="w-full h-[45px] bg-gray-600 border border-gray-600 rounded-lg"
                 isSubmitting={isSubmitting}
                 disabled={isSubmitting}
               >
