@@ -3,6 +3,7 @@ import useUsers from "@/hooks/use-users";
 import { formatDate } from "@/lib/utils";
 import { Icon } from "@iconify/react";
 import { ReactNode, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const PageLayout = ({
   pageTitle = "Untitled",
@@ -23,7 +24,7 @@ const PageLayout = ({
     <div className="page-layout flex flex-col h-full overflow-y-auto">
       <header className="flex items-center px-7 md:px-[3%] lg:px-[5%] pt-[20px] pb-[12px] border-b border-[#EFF1FF] bg-white z-[11] sticky top-0">
         <div className="page-info">
-          <h3 className="text-xl font-black">{pageTitle}</h3>
+          <h3 className="text-xl font-black text-primary">{pageTitle}</h3>
           <p className="text-xs text-[#979797]">{pageDescription}</p>
         </div>
 
@@ -44,13 +45,18 @@ const PageLayout = ({
             <h3 className="font-extrabold">
               {currentUser?.firstName} {currentUser?.lastName}
             </h3>
-            <p className="text-xs text-[#979797]">Customer</p>
+            <p className="text-xs text-[#979797] font-semibold">Admin</p>
           </div>
         </div>
       </header>
-      <section className="flex-1 px-7 md:px-[3%] lg:px-[5%] py-[22px] relative">
+      <motion.section
+        initial={{ opacity: 0, y: 10 }} // Start hidden and 50px below
+        animate={{ opacity: 1, y: 0 }} // Fade in and move up to normal position
+        transition={{ duration: 0.3, ease: "easeOut" }} // Smooth transition
+        className="flex-1 px-7 md:px-[3%] lg:px-[5%] py-[22px] relative"
+      >
         {children}
-      </section>
+      </motion.section>
     </div>
   );
 };

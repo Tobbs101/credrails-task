@@ -1,12 +1,14 @@
+import useUsers from "@/hooks/use-users";
 import { Link } from "react-router-dom";
 
 const DashboardDetails = ({ data }: { data: any[] }) => {
+  const { currentUser } = useUsers();
   return (
     <div className="p-6 max-w-4xl mx-auto">
       {/* Welcome Section */}
       <div className="bg-gray-100 p-6 rounded-md shadow-md">
         <h1 className="text-xl font-semibold text-gray-800">
-          Welcome, John Doe!
+          Welcome, {currentUser.firstName} {currentUser.lastName}!
         </h1>
         <p className="text-gray-600 text-sm">
           Here's a summary of your uploaded files.
@@ -50,13 +52,13 @@ const DashboardDetails = ({ data }: { data: any[] }) => {
       <div className="flex gap-4 mt-6">
         <Link
           to="/dashboard/upload"
-          className="bg-primary text-white px-6 py-2 rounded-md text-sm font-semibold hover:bg-primary/80 duration-200 transition-all"
+          className="bg-primary text-white px-6 text-center py-2 rounded-md text-sm font-semibold hover:bg-primary/80 duration-200 transition-all"
         >
           Upload New File
         </Link>
         <Link
           to="/dashboard/details"
-          className="bg-white border text-primary border-primary  px-6 py-2 rounded-md text-sm font-semibold hover:bg-gray-100 duration-200 transition-all"
+          className="bg-white border text-primary border-primary  px-6 text-center py-2 rounded-md text-sm font-semibold hover:bg-gray-100 duration-200 transition-all"
         >
           View Files
         </Link>

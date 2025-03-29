@@ -7,17 +7,14 @@ const menu = [
   {
     name: "Dashboard",
     href: "/dashboard/overview",
-    accessibleBy: ["admin", "agent", "manager", "product"],
   },
   {
     name: "File Upload",
     href: "/dashboard/upload",
-    accessibleBy: ["admin", "manager", "product"],
   },
   {
     name: "File Details",
     href: "/dashboard/details",
-    accessibleBy: ["admin", "agent", "manager", "product"],
   },
 ];
 

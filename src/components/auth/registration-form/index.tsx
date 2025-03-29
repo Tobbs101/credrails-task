@@ -183,7 +183,7 @@ const RegistrationForm = () => {
                     field={field}
                     className="border min-w-[250px] border-gray-300 shadow-none py-5"
                     type="password"
-                    label={"Confirm Password"}
+                    label={"Password"}
                   />
                 )}
               />

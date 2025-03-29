@@ -35,11 +35,11 @@ const useUsers = () => {
         // Add new user
         users.push(user);
 
-        // Update localStorage
+        // Update storage
         localStorage.setItem(SESSION_USERS_KEY, JSON.stringify(users));
 
         resolve("Added successfully, proceed to login!");
-      }, 2000); // 2 seconds delay
+      }, 2000); // Simulating API delay
     });
   };
 

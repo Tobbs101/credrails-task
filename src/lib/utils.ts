@@ -38,3 +38,10 @@ export function formatDate(date: Date) {
 
   return `${day} ${month}, ${year} ${hour}:${minute} ${period}`;
 }
+
+export const trimMessage = (message: string, maxLength: number) => {
+  if (message.length <= maxLength) {
+    return message;
+  }
+  return `${message.slice(0, maxLength)}...`;
+};

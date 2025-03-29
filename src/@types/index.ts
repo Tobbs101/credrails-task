@@ -8,17 +8,26 @@ export interface AppUser {
   teams: string[];
 }
 
-export interface NewUserProps {
+export type NewUserProps = {
   firstName: string;
   lastName: string;
   password: string;
   email: string;
   mobileNumber: string;
-}
+};
 
 export type ResponseModal = {
   show: boolean;
   title: string | ReactNode;
   info: string | ReactNode;
   primaryBtnLabel: string;
+};
+
+export type NewFileProps = {
+  startDate: Date;
+  endDate: Date;
+  dateType: string;
+  dateUploaded: Date;
+  file: File | null;
+  recordCount: number;
 };

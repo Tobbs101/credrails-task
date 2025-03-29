@@ -22,15 +22,13 @@ module.exports = {
         900: 900,
       },
       colors: {
-        "light-purple": "rgba(64, 25, 109, 0.3)",
-        "brand-purple": "#40196D",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "black",
+          DEFAULT: "#4b5563",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
