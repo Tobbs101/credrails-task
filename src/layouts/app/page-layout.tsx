@@ -4,6 +4,7 @@ import { formatDate } from "@/lib/utils";
 import { Icon } from "@iconify/react";
 import { ReactNode, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const PageLayout = ({
   pageTitle = "Untitled",
@@ -15,6 +16,14 @@ const PageLayout = ({
   children?: ReactNode;
 }) => {
   const { currentUser } = useUsers();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!currentUser.email) {
+      alert("Session timed out, please log in again!");
+      navigate("/auth/login");
+    }
+  }, [currentUser]);
 
   useEffect(() => {
     document.title = `${pageTitle} | ${pageDescription}`;
